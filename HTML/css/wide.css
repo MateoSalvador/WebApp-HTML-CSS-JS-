@@ -1,0 +1,32 @@
+body{
+    background: #CCC;
+}
+
+#page-wrap:after {  /* Selector de lugar que introduce el contenido después d
+ los elementos con ID page-wrap*/
+    content: "Layout para pantallas anchas";
+}
+
+nav {  /*navigation*/
+    float: left;
+    width: 15%;
+    height: 500px;
+    padding:5px;
+}
+
+nav span {
+    margin: 0px 100px 0px 0px;
+}
+
+
+section {
+    float: right;
+    width: 80%;
+    height: 500px;
+    padding:5px;
+}
+
+footer {
+    clear: both;
+    display: block;
+}

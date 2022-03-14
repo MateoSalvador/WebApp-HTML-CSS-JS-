@@ -1,0 +1,37 @@
+* {
+    margin: 0;  /* por defecto no habrá separación entre los elementos HTML*/
+    padding: 0; /* por defecto no habrá separación entre el contenido y su contenedor*/
+}
+body{
+    font: 14px Georgia, serif;  /* tamaño y tipo de letra del contenido*/
+}
+#page-wrap { /* div principal*/
+    margin: 2% auto;
+    color: white;
+}
+#page-wrap > .main {  /* capa de elementos principales.*/
+    border: 1px solid #999;  /* línea de división entre secciones */
+    pading: 1%;
+    margin-bottom: 1px;
+    color: black;
+}
+header, nav, section {
+    background: lightblue;
+}
+section #titulo {
+    text-align: center;
+}
+section #imagen {
+    display: block; /* la imagen será un elemento HTML de tipo bloque*/
+    margin:auto;   /*centrar imagen*/
+    width: 20%;  /*la imagen ocupará el 20% del ancho de la ventana*/
+    max-height: 410px;  /* altura máxima de la imagen*/
+    padding: 15%; /* separación de la imagen respecto al borde */
+}
+footer {
+    background: #eee;
+    text-align: center;
+}
+nav span {
+    margin: 40px 10px 20px 0px;  /* margin_top, margin_right, margin_bottom, margin_left */
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    
+    <style type="text/css">
+        *{
+            color: white;
+            font-family: 'Roboto', 'sans-serif';
+        }
+        .nav{
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 1%;
+        }
+
+        ul{
+            list-style: none;
+        }
+        a:link{
+            text-decoration: none;
+            align-items: center;
+        }
+        .nav-links{
+            display: flex;
+            width: 50%;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .btn{
+            background-color: rgb(29, 168, 211);
+            border: 0px;
+            width: 100px;
+            height: 25px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h1>Perfil</h1>
+        <ul class="nav-links">
+            <li><a href="a">Inicio</a></li>
+            <li><a href="a">Mi Perfil</a></li>
+            <li><a href="a">Encontrar Conexiones</a></li>
+            <li><button class="btn">Cerrar sesión</li>
+        </ul>
+    </div>
+</body>
+</html>

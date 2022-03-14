@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical App | Compra Medicamentos</title>
+    <link rel="icon" href="img/cruzAzul.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style type="text/css">
+        *{
+            font-family: 'Roboto', sans-serif;
+        }
+        #cabecera{
+        background-color: #4eaffd;
+        display: flex;  
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        justify-content:space-around;
+        width: 40%;
+        margin: 0 auto;
+        }
+        .titulofrm{
+            color: #4eaffd;
+            font-size: 25px;
+            margin: 0 auto;
+            margin-top: 3%;
+            font-weight: bold ;
+            text-align: center;
+        }
+        .fondoFormulario{
+            background-color: #4eaffd;
+            width: 40%;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            margin-block-start: 3%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .inputfrmCompraMedicamento{
+            background-color: white;
+            color: grey;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+            margin-block-start: 3%;
+            width: 50%;
+            height: 20px;
+        }
+        .btnAgregarAlCarrito{
+            background-color: #4eaffd;
+            color: white;
+            font-weight: bold;
+            font-size: medium;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 3%;
+            width: 40%;
+            height: 40px;
+        }
+        .divBotones{
+            width: 40%;
+            height: 50px;
+            margin: 0 auto;
+            display: flex;  
+            align-items: center;
+            justify-content: space-between;
+            margin-block-start: 3%;
+        }
+        .btn{
+            background-color: #4eaffd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 5%;
+            width: 25%;
+            height: 40px;
+        }
+        footer{
+            font-size:small;
+            text-align:center;
+            margin-block-start: 15%;
+            width:100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="cabecera">
+        <img src="img/2.png" width="150px" height="100px" >
+        <h1>MEDICAL APP</h1>
+    </div>
+    <div class="titulofrm">
+        <label text>COMPRA DE MEDICAMENTOS</label>
+    </div>
+    <form action="/register" method="post">
+        <div class="fondoFormulario">
+            <input class="inputfrmCompraMedicamento" type="text" name="txtCedulaCliente" placeholder="INGRESE EL NUMERO DE CEDULA">
+            <select class="inputfrmCompraMedicamento" name="cmbMedicamento" placeholder="SELECCIONE EL MEDICAMENTO">
+                <option>Paracetamol</option>
+                <option>Ibuprofeno</option>
+                <option>Tempra</option>
+            </select>
+            <input class="inputfrmCompraMedicamento" type="number" name="txtCantidad" placeholder="INGRESE LA CANTIDAD">
+        </div>
+    <div>
+        <button class="btnAgregarAlCarrito" type="submit" name="subRegister">AGREGAR AL CARRITO</button>
+    </div>
+
+    <div class="divBotones">
+        <button class="btn" type="reset">
+            <img src="img/atras.png" width="30px" height="30px">
+        </button>
+        <button class="btn" type="submit">
+            <img src="img/adelante.png" width="30px" height="30px">
+        </button>
+    </div>
+</form>
+
+<footer >MEDICAL APP - DERECHOS RESERVADOS<br>Danilo Chicango - Juan Noboa - Mateo Salvador - 
+    Rommel Arévalo</footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <style type="text/css">
+        * {
+            font-family: 'roboto','sans-serif';
+            font-size: 16pt;
+            margin: 2px;
+        }
+
+        h1{
+            font-size: 22pt;
+            margin-bottom: 10px;
+            background-color: rebeccapurple;
+            height: 15%;
+            color: white;
+           
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    
+    <form action="/register" method="post">
+        <div>    
+        <label>First Name:*</label>
+        <input type="text" name="txtfirstname">
+        </div>
+        <div>
+        <form action="/register" method="post">
+            <label>Lastname Name:*</label>
+            <input type="text" name="txtsecondtname">
+        </div>
+        <div>
+            <label>Email Address:*</label>
+            <input type="text" name="txtmail">
+        </div>
+        <div>
+            <label>Password:*</label>
+            <input type="password" name="txtpasswd">
+        </div>
+        <div>
+            <label>Confirm Password:*</label>
+            <input type="password" name="txtonfirm">
+        </div>
+        <div>
+            <label>Birthday:*</label>
+            <input type="date" name="txtBirthday">
+        </div>
+        <div>
+            <label>Gender Identity:</label><br>
+            <input type="radio" name="radMale" id="idMale">
+            <label for="idMale">Male</label>
+
+            <input type="radio" name="radFemale" id="idFemale">
+            <label for="idFemale">Female</label>
+
+            <input type="radio" name="radNonBinary" id="idNonBinary">
+            <label for="idNonbinary">Non-binary</label>
+
+            <input type="radio" name="radNotAns" id="idNotAns">
+            <label for="idNotAns">I prefer not to answer</label>
+        </div>
+        <div>
+            <label>A short Description about myself</label><br>
+            <textarea name="txtMyself" cols="45" rows="10"></textarea>
+        </div>
+        <div>
+            <label>Favorite Programming Language:</label>
+            <select name="cmbLanguage">
+                <option>Javascript</option>
+                <option>Python</option>
+                <option>R</option>
+            </select>
+        </div>
+        <div>
+            <input type="checkbox" name="chkupdates" id="idUpdate " checked>
+            <label for="idUpdate">Yes, I would like to receive periodic email update</label>
+        </div>
+        <div>
+            <br><input type="submit" name="register" value="Join Us">
+            <p> *Indicate a required field </p>
+        </div>
+    </form>
+</body>
+</html>

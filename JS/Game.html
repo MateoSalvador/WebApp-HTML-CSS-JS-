@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Combat</title>
+    <link rel="icon" href="img/avion1.png">
+    <style type="text/css">
+        /*Estilo para el fondo del Océano*/
+        #ocean{
+            background-image: url("img/oceano.png");
+            width: 700px;
+            height: 900px; 
+            float: left;   
+        }
+        /*Estilo para el jugador*/
+        .player {
+            position: absolute;
+            background-image: url("img/avion1.png");
+            width: 70px;
+            height: 75px; 
+        }
+        /*Estilo para el enemigo*/
+        .enemy{
+            position: absolute;
+            background-image: url("img/avion2.png");
+            width: 70px;
+            height: 75px; 
+        }
+        /*Estilo para el misil*/
+        .missile{
+            position: absolute;
+            width: 3px;
+            height: 10px;
+            background-color: #7cff22;
+        }
+        /*Estilo para el panel de puntajes*/
+        .scorePanel{
+            background-color: lightgreen;
+            width: 250px;
+            height: 900px;
+            float: left;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.75cm;
+            font-weight: bold;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+    <div id="ocean">
+        <div id="players"></div>
+        <div id="enemies"></div>
+        <div id="missiles"></div>
+    </div>
+    <div id="Panel"></div>
+    <script type="text/javascript">
+        // Variables para vidas y puntajes
+        var lives=5;
+        var score=0;
+        var lastScore=0;
+        var velocidad=225;
+        var highScore=0;
+        // Posición inicial del jugador
+        var player = {
+            left: 450,
+            top: 720
+        };
+        // Generación de enemigos iniciales
+        var enemies = [
+            {left: 200, top: 100},
+            {left: 300, top: 200},
+            {left: 350, top: 300},
+            {left: 400, top: 400},
+            {left: 500, top: 250},
+        ];
+        // Arreglo para almacenar los misiles disparados
+        var missile = [];
+        // Arreglo para registrar los puntajes de la partida 
+        var scores = [highScore];
+
+        // Función para aumentar progresivamente los puntajes ante derribo y las vidas perdidas
+        function ScoreAndLives(){
+           var content = "";
+           content = "<div class='scorePanel' style= 'left: "+ 0 + "px; top: " + 0 + "px'><h2 style='text-align: center'>AIR COMBAT</h2>Score: " + score +
+           "</br>Lives: "+ lives +"</br>Last Score: "+ lastScore + "</br>High Score: "+ highScore +"</div>";
+           //console.log(content);
+           document.getElementById("Panel").innerHTML = content;
+        }
+
+        // Función para dibujar al jugador en el mapa
+        function drawPlayer(){
+           var content = "";
+           content = "<div class='player' style= 'left: "+ player.left + "px; top: " + player.top + "px'></div>";
+           //console.log(content);
+           document.getElementById("players").innerHTML = content;
+        }
+        // Función para dibujar al enemigo en el mapa
+        function drawEnemy(){
+            var content = "";
+           for(var i=0; i<enemies.length; i++){
+           content += "<div class='enemy' style= 'left: "+enemies[i].left + "px; top: " + enemies[i].top +"px'></div>";
+           document.getElementById("enemies").innerHTML = content;
+            }
+        }
+        drawEnemy();
+        // Función para dibujar a los misiles disparados
+        function drawMissile(){
+            var content = "";
+           for(var i=0; i<missile.length; i++){
+           content += "<div class='missile' style= 'left: "+ missile[i].left + "px; top: " + missile[i].top +"px'></div>";
+           document.getElementById("missiles").innerHTML = content;
+            }    
+        }
+        // Función para desplazar a los enemigos dentro del limite del mapa
+        // En caso de exceder la posición se autodestruyen y se genera uno nuevo con una posición al azar
+        function moveEnemies(){
+            for(var i=0; i<enemies.length; i++){
+                if(enemies[i].top < 815){
+                enemies[i].top +=10;
+                }
+                else{
+                enemies.splice(i,1) 
+                enemies.push({left: Math.floor(Math.random()*501),top:0})  
+                }
+            }
+        }
+
+        // Función para desplazar misiles
+        function moveMissiles(){
+            for(var i=0; i<missile.length; i++){
+                missile[i].top -=10;
+            }
+        }
+        /*Función para comprobar los impactos de los misiles a los enemigos y en ese caso de éxito
+        remover tanto el misil como el enemigo, así como generar un nuevo enemigo*/
+        function killershot(){
+            for(var i=0; i<enemies.length; i++){
+                for(var j=0; j<missile.length;j++){
+                    if(Math.abs(Math.abs(missile[j].left-35)-Math.abs(enemies[i].left))<=35 && missile[j].top-enemies[i].top<=15){    
+                        //console.log(missile[j]);
+                        //console.log(enemies[i]);
+                        //console.log("X",(missile[j].left)-enemies[i].left);
+                        //console.log("Y",(missile[j].top)-enemies[i].top);
+                        missile.splice(j,1);
+                        enemies.splice(i,1);
+                        enemies.push({left: Math.floor(Math.random()*501),top:0});
+                        score ++;
+                        break;
+                    }
+                }
+            }
+        }
+        /*Función para comprobar la colisión de un enemigo con el jugador, y en caso de exito restar una vida*/
+        function colition(){
+            for(var i=0; i<enemies.length; i++){
+                    if(Math.abs(player.left-enemies[i].left)<=15 && player.top-enemies[i].top<=Math.abs(15)){
+                        enemies.splice(i,1);
+                        enemies.push({left: Math.floor(Math.random()*501),top:0})
+                        lives --;
+                        break;
+                    
+                }
+            }
+        }
+        // Función para finalizar el juego al perder todas las vidas
+        function gameover(){
+            if(lives==0){
+                alert("GAME OVER!! Tu puntaje fue: "+ score +" Aplasta OK para reiniciar");
+                lastScore=score;
+                scores.push(score);
+                highscore();
+                lives=5;
+                score=0;
+                player.top=720;
+                player.left=400;
+            }
+        }
+
+        // Función para obtener el puntaje más alto
+        function highscore(){
+            for(var i=0; i<scores.length; i++){
+                if(highScore < scores[i])
+                highScore = scores[i];
+            }
+        }
+        // Genereación de eventos por parte de las teclas
+        document.onkeydown = function(e){
+          //console.log(e);
+          if(e.keyCode == 37 && player.left > 0){
+              player.left = player.left-10;
+          }
+          else if(e.keyCode == 39 && player.left < 640){
+              player.left = player.left+10;    
+          }
+          else if (e.keyCode == 38 && player.top > 600){
+              player.top = player.top-10;
+          }
+          else if (e.keyCode == 40 && player.top < 815){
+              player.top = player.top+10;
+          }
+          else if(e.keyCode == 32){
+              missile.push({left: player.left + 35, top: player.top - 5})
+              drawMissile();
+          }
+          drawPlayer();
+        }
+        // Función para aumentar la velocidad de los aviones cada 5 derribos
+        function dificultad(){
+            if(score % 5 ==0 && velocidad > 160){
+                velocidad-=10;
+                //console.log(velocidad)
+            }
+        }
+        // Bucles para ejecución continua del juego
+        function gameloop(){
+            ScoreAndLives();
+            drawPlayer();
+            drawEnemy();
+            moveEnemies();
+            colition();
+            dificultad();
+            gameover();
+            setTimeout(gameloop,velocidad); 
+        };
+        function missileloop(){
+            drawMissile();
+            moveMissiles();
+            killershot();
+            setTimeout(missileloop,150); 
+        }
+        missileloop();
+        gameloop();
+    </script>
+   <!-- <div>
+        <img src="img/oceano.png" alt="fondo del océano">
+        <img src="img\avion2.png" alt="Enemigo">
+    </div>-->
+    <footer style="clear: both; font-weight: bold"><p>Mateo Salvador y Luis Oña GR1</p></footer>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical App | Registro Clientes</title>
+    <link rel="icon" href="img/cruzAzul.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style type="text/css">
+        *{
+            font-family: 'Roboto', sans-serif;
+        }
+        #cabecera{
+        background-color: #4eaffd;
+        display: flex;  
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        justify-content:space-around;
+        width: 40%;
+        margin: 0 auto;
+        }
+        .titulofrm{
+            color: #4eaffd;
+            font-size: 25px;
+            margin: 0 auto;
+            margin-top: 3%;
+            font-weight: bold ;
+            text-align: center;
+        }
+        .fondoFormulario{
+            background-color: #4eaffd;
+            width: 40%;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            margin-block-start: 3%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .inputfrmClientes{
+            background-color: white;
+            color: grey;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+            margin-block-start: 3%;
+            width: 50%;
+            height: 20px;
+        }
+        .labelFechaNacimiento{
+            font-size: small;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 3%;
+            width: 50%;
+            height: 20px;
+        }
+        .inputFechafrmClientes{
+            background-color: white;
+            color: grey;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+            width: 50%;
+            height: 20px;
+           
+        }
+
+        .divBotones{
+            width: 40%;
+            height: 50px;
+            margin: 0 auto;
+            display: flex;  
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .btn{
+            background-color: #4eaffd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 5%;
+            width: 25%;
+            height: 40px;
+        }
+        footer{
+            font-size:small;
+            text-align:center;
+            margin-block-start: 15%;
+            width:100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="cabecera">
+        <img src="img/1.png" width="100px" height="100px">
+        <h1>MEDICAL APP</h1>
+    </div>
+    <div  class="titulofrm">
+        <label>REGISTRO DE CLIENTES</label>
+    </div>
+    <div class="fondoFormulario">
+        <form action="/register" method="post">
+            <input class="inputfrmClientes" type="text" name="txtNombre" placeholder="INGRESE SU NOMBRE" required>
+            <input class="inputfrmClientes" type="text" name="txtApellido" placeholder="INGRESE SU APELLIDO" required>
+            <input class="inputfrmClientes" type="text" name="txtCedula" placeholder="INGRESE SU CEDULA" required>
+            <label class="labelFechaNacimiento">INGRESE SU FECHA DE NACIMIENTO</label>
+            <input class="inputFechafrmClientes" type="date" name="txtFechaNacimiento" required>
+            <input class="inputfrmClientes" type="email" name="txtEmail" placeholder="INGRESE SU CORREO ELECTRONICO" required>
+            <input class="inputfrmClientes" type="text" name="txtDireccion" placeholder="INGRESE SU DIRECCION DE ENTREGA" required>
+    </div>
+
+    <div class="divBotones">
+        <button class="btn" type="reset">
+            <img src="img/atras.png" width="30px" height="30px">
+        </button>
+        <button class="btn" type="submit">
+            <img src="img/adelante.png" width="30px" height="30px">
+        </button>
+    </div>
+
+</form>
+
+    <footer >MEDICAL APP - DERECHOS RESERVADOS<br>Danilo Chicango - Juan Noboa - Mateo Salvador - 
+        Rommel Arévalo</footer>
+
+
+
+</body>
+</html>
