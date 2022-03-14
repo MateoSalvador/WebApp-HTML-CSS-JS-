@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical App | Registro Medicamentos</title>
+    <link rel="icon" href="img/cruzAzul.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        *{
+            font-family: 'Roboto', sans-serif;
+        }
+        #cabecera{
+        background-color: #4eaffd;
+        display: flex;  
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        justify-content:space-around;
+        width: 40%;
+        margin: 0 auto;
+        }
+        .titulofrm{
+            color: #4eaffd;
+            font-size: 25px;
+            margin: 0 auto;
+            margin-top: 3%;
+            font-weight: bold ;
+            text-align: center;
+        }
+        .fondoFormulario{
+            background-color: #4eaffd;
+            width: 40%;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            margin-block-start: 3%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .inputfrmMedicamentos{
+            background-color: white;
+            color: grey;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+            margin-block-start: 3%;
+            width: 50%;
+            height: 20px;  
+        }
+        .labelFechaVencimiento{
+            font-size: small;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 3%;
+            width: 50%;
+            height: 20px;
+        }
+        .inputFechaVencimientofrmMedicamentos{
+            background-color: white;
+            color: grey;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+            width: 50%;
+            height: 20px;
+        }
+        .divBotones{
+            width: 40%;
+            height: 50px;
+            margin: 0 auto;
+            display: flex;  
+            align-items: center;
+            justify-content: space-between;
+        }
+        .btn{
+            background-color: #4eaffd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 5%;
+            width: 25%;
+            height: 40px;
+        }
+        footer{
+            font-size:small;
+            text-align:center;
+            margin-block-start: 15%;
+            width:100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="cabecera">
+        <img src="img/4.png" width="60px" height="100px">
+        <h1>MEDICAL APP</h1>
+    </div>
+    <div class="titulofrm">
+        REGISTRO DE MEDICAMENTOS
+    </div>
+    <form action="/registerMedicine" method="post">
+        <div class="fondoFormulario">
+            <input class="inputfrmMedicamentos" type="text" name="nombreMedicamento" placeholder="INGRESE EL NOMBRE DEL MEDICAMENTO" required>
+            <select class="inputfrmMedicamentos" name="tipo" placeholder="INGRESE EL TIPO" required>
+                <option>Venta Libre</option>
+                <option>Bajo Receta</option>
+            </select>
+            <input class="inputfrmMedicamentos" type="number" step="any" name="costoUnitario" placeholder="INGRESE EL COSTO UNITARIO" required>
+            <input class="inputfrmMedicamentos" type="number" step="any" name="pvp" placeholder="INGRESE EL PVP" required>
+            <label class="labelFechaVencimiento">INGRESE LA FECHA DE VENCIMIENTO</label>
+            <input class="inputFechaVencimientofrmMedicamentos" type="date" name="FechaVencimiento" required>
+            <input class="inputfrmMedicamentos" type="text" name="proveedor" placeholder="INGRESE EL PROVEEDOR" required>
+        </div>
+
+        <div class="divBotones">
+            <button class="btn" type="submit">
+                <img src="img/adelante.png" width="30px" height="30px">
+            </button>
+        </div>
+
+    </form>
+    <div>
+        <a href="/MenuRegistros" class="divBotones">
+            <button class="btn" type="button">
+                <img src="img/atras.png" width="30px" height="30px">
+            </button>
+        </a>
+    </div>
+    <footer >MEDICAL APP - DERECHOS RESERVADOS<br>Danilo Chicango - Juan Noboa - Mateo Salvador - 
+        Rommel Arévalo</footer>
+
+
+</body>
+</html>

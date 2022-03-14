@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical App | Login Empleado</title>
+    <link rel="icon" href="img/cruzAzul.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <style type="text/css">
+        *{
+            font-family: 'Roboto', sans-serif;
+        }
+        #cabecera{
+        background-color: #4eaffd;
+        display: flex;  
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        justify-content:space-around;
+        width: 40%;
+        margin: 0 auto;
+        }
+        .titulofrm{
+            color: #4eaffd;
+            font-size: 25px;
+            margin: 0 auto;
+            margin-top: 3%;
+            font-weight: bold ;
+            text-align: center;
+        }
+        .fondoFormulario{
+            background-color: #4eaffd;
+            width: 40%;
+            margin: 0 auto;
+            align-items: center;
+            justify-content: center;
+            margin-block-start: 3%;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .labelfrmLogin{
+            font-size: small;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 3%;
+            width: 50%;
+            height: 20px;
+        }
+        .divImagenInput{
+            display: flex;  
+            align-items: center;
+        }
+        .imagen{
+            margin-left: 10%;
+        }
+        .inputfrmLogin{
+            background-color: white;
+            color: grey;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+            width: 70%;
+            height: 20px;
+        }
+        .btn{
+            background-color: #4eaffd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 3%;
+            width: 5%;
+            height: 40px;
+        }
+        .labelRegistrarse{
+            font-size: medium;
+            font-weight: bold;
+            color: black;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 3%;
+            width: 50%;
+            height: 20px;
+        }
+        .labelRegistrarseLink{
+            font-size: medium;
+            font-weight: bold;
+            color: #8FD66A;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            margin-block-start: 1%;
+            width: 50%;
+            height: 20px;
+        }
+        a:link{
+        text-decoration: none;
+        }
+        footer{
+            font-size:small;
+            text-align:center;
+            margin-block-start: 15%;
+            width:100%;
+        }
+        .labelRegistrarseLink:hover{
+        color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="cabecera">
+        <img src="img/cruzAzul.png" width="150px" height="100px" >
+        <h1>MEDICAL APP</h1>
+    </div>
+    <div class="titulofrm">
+        <label text>BIENVENIDO AL TRABAJO</label>
+    </div>
+        <form action="/loginEmpleado" method="post">
+        <div class="fondoFormulario">
+            <label class="labelfrmLogin">USUARIO</label>
+            <div class="divImagenInput">
+                <img class="imagen" src="img/Usuario.png" width="30px" height="30px">
+                <input class="inputfrmLogin" type="text" name="nombre" placeholder="INGRESE SU USUARIO" required>
+            </div>
+            <label class="labelfrmLogin">CONTRASEÑA</label>
+            <div class="divImagenInput">
+                <img class="imagen" src="img/password.png" width="30px" height="30px">
+                <input class="inputfrmLogin" type="password" name="password" placeholder="INGRESE SU CONTRASEÑA" required>
+            </div>
+        </div>
+        <div>
+            <a href="frmMenu.html">
+            <button class="btn" type="submit-button">
+                <img src="img/enviar.png" width="30px" height="30px">
+            </button>
+            </a>
+        </div>
+</form>
+        <div class="divEnlace">
+            <label class="labelRegistrarse">
+                ¿Deseas registrarte? Da click &nbsp <a href="frmERegistroEmpleado.html">
+                    <label class="labelRegistrarseLink">aquí. </label>
+                </a>
+            </label>
+            
+        </div>
+        <div>
+            <a href="frmPrincipal.html">
+                <button class="btn" type="button">
+                    <img src="img/atras.png" width="30px" height="30px">
+                </button>
+            </a>
+        </div>
+
+<footer>MEDICAL APP - DERECHOS RESERVADOS<br>Danilo Chicango - Juan Noboa - Mateo Salvador - 
+    Rommel Arévalo</footer>
+</body>
+</html>
