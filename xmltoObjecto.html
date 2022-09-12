@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h2>Conversor</h2>
+  <script type="text/javascript">
+  var xml = '<math> <apply> <eq/> <apply> <plus/> <apply> <power/> <ci>x</ci> <cn>2</cn> </apply> <apply> <times/> <cn>4</cn> <ci>x</ci> </apply> <cn>4</cn> </apply> <cn>0</cn> </apply> </math>'
+  var xml2 = '<mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>4</mn><mo>times</mo><mi>x</mi></mrow><mo>+</mo><mn>4</mn></mrow><mo>=</mo><mn>0</mn></mrow>'
+  var xml3 = `<apply>
+  <eq/>
+  <ci>x</ci>
+  <apply>
+    <divide/>
+    <apply>
+      <csymbol>+-</csymbol>
+      <apply>
+        <minus/>
+        <ci>b</ci>
+      </apply>
+      <apply>
+        <root/>
+        <degree><cn>2</cn></degree>
+        <apply>
+          <minus/>
+          <apply>
+            <power/>
+            <ci>b</ci>
+            <cn>2</cn>
+          </apply>
+          <apply>
+            <times/>
+            <cn>4</cn>
+            <ci>a</ci>
+            <ci>c</ci>
+          </apply>
+        </apply>
+      </apply>
+    </apply>
+    <apply>
+      <times/>
+      <cn>2</cn>
+      <ci>a</ci>
+    </apply>
+  </apply>
+</apply>`
+  let xmlN = reemplazar(xml)
+  parser = new DOMParser();
+  xmlDoc = parser.parseFromString(xmlN,"application/xml");
+  var myArray = [];
+ function xml2json(srcDOM) {
+  let children = [...srcDOM.children];
+  
+  // base case for recursion. 
+  if (!children.length) {
+    return srcDOM.innerHTML
+  }
+  
+  // initializing object to be returned. 
+  let jsonResult = {};
+  
+  for (let child of children) {
+    
+    // checking is child has siblings of same name. 
+    let childIsArray = children.filter(eachChild => eachChild.nodeName === child.nodeName).length > 1;
+    // if child is array, save the values as array, else as strings. 
+    if (childIsArray) {
+      if (jsonResult[child.nodeName] === undefined) {
+        jsonResult[child.nodeName] = [xml2json(child)];
+      } else {
+        jsonResult[child.nodeName].push(xml2json(child));
+      }
+    } else {
+      jsonResult[child.nodeName] = xml2json(child);
+    }
+  }
+  
+  return jsonResult;
+}
+
+function reemplazar(XML){
+  XML = XML.replace("<eq/>", "<eq>=</eq>")
+  XML = XML.replace("<plus/>", "<plus>+</plus>")
+  XML =  XML.replace("<minus/>", "<minus>-</minus>")
+  XML = XML.replace("<times/>", "<times>*</times>")
+  XML = XML.replace("<power/>", "<power>^</power>")
+  XML = XML.replace("<divide/>", "<divide>/</divide>")
+  XML = XML.replace("<factorial/>", "<factorial>!</factorial>")
+  XML = XML.replace("<lt/>", "<lt/> < </lt>")
+  XML = XML.replace("<gt/>", "<gt/> > </gt>")
+  XML = XML.replace("<sin/>", "<sin>sin</sin>")
+  XML = XML.replace("<cos/>", "<cos>cos</cos>")
+  XML = XML.replace("<tan/>", "<tan>/</tan>")
+  return XML
+}
+
+//console.log(xml2json(xmlDoc));
+var arbol = xml2json(xmlDoc);
+console.log('arbol', arbol)
+
+for (let [key, value] of Object.entries(arbol)) {
+  console.log(`${key}: ${value}`);
+}
+
+/*function inOrder(root) { 
+   root.left && inOrder(root.left) 
+   console.log(root.val) 
+   root.right && inOrder(root.right) 
+}*/
+// inOrder(arbol)
+ //console.log(arbol.math.apply)
+function printAllVals(obj) {
+  for (let k in obj) {
+    if (typeof obj[k] === "object") {
+      printAllVals(obj[k])
+      //console.log(obj[k]);
+    } else {
+      // base case, stop recurring
+      console.log(obj[k]);
+      myArray.push(obj[k]);
+    }
+  }
+}
+
+let jsonFile = arbol 
+function traverse(obj) {
+    var ids = [];
+    for (var prop in obj) {
+        if (typeof obj[prop] == "object" && obj[prop]) {
+            if (prop == 'ids') {
+                ids = obj[prop].map(function(elem){
+                   return elem.id;
+               })
+            }
+            ids =ids.concat(traverse(obj[prop]));
+        }
+    }
+    return ids;
+}
+printAllVals(arbol);
+console.log('valores',myArray);
+console.log('Opcion2')
+var ids = traverse(jsonFile);
+console.log('ids', ids);
+
+  </script> 
+</body>
+</html>
