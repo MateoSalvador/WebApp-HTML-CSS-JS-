@@ -48,6 +48,19 @@
     </apply>
   </apply>
 </apply>`
+  var xml4 = `<math>
+    <mrow>
+   <apply>
+     <power/>
+     <apply>
+       <plus/>
+       <ci>a</ci>
+       <ci>b</ci>
+     </apply>
+     <cn>2</cn>
+   </apply>
+ </mrow>
+ </math>`
   let xmlN = reemplazar(xml)
   parser = new DOMParser();
   xmlDoc = parser.parseFromString(xmlN,"application/xml");
@@ -82,7 +95,7 @@
   return jsonResult;
 }
 
-function reemplazar(XML){
+/*function reemplazar(XML){
   XML = XML.replace("<eq/>", "<eq>=</eq>")
   XML = XML.replace("<plus/>", "<plus>+</plus>")
   XML =  XML.replace("<minus/>", "<minus>-</minus>")
@@ -95,6 +108,22 @@ function reemplazar(XML){
   XML = XML.replace("<sin/>", "<sin>sin</sin>")
   XML = XML.replace("<cos/>", "<cos>cos</cos>")
   XML = XML.replace("<tan/>", "<tan>/</tan>")
+  return XML
+}*/
+
+function reemplazar(XML){
+  XML = XML.replace("<eq/>", "<eq> es igual a </eq>")
+  XML = XML.replace("<plus/>", "<plus> más </plus>")
+  XML =  XML.replace("<minus/>", "<minus> menos </minus>")
+  XML = XML.replace("<times/>", "<times> multiplicado </times>")
+  XML = XML.replace("<power/>", "<power> potencia </power>")
+  XML = XML.replace("<divide/>", "<divide> dividido </divide>")
+  XML = XML.replace("<factorial/>", "<factorial> factorial </factorial>")
+  XML = XML.replace("<lt/>", "<lt/> menor que </lt>")
+  XML = XML.replace("<gt/>", "<gt/> mayor que </gt>")
+  XML = XML.replace("<sin/>", "<sin> seno de </sin>")
+  XML = XML.replace("<cos/>", "<cos> coseno de </cos>")
+  XML = XML.replace("<tan/>", "<tan> tangente de </tan>")
   return XML
 }
 
@@ -125,7 +154,15 @@ function printAllVals(obj) {
     }
   }
 }
-
+function traverse2(arbol){
+  if (arbol !== null && typeof arbol == "object") {
+    Object.entries(arbol).forEach(([key, value]) => {
+      traverse2(value);
+    });
+  } else {
+    console.log(arbol);
+  }
+};
 let jsonFile = arbol 
 function traverse(obj) {
     var ids = [];
@@ -146,7 +183,26 @@ console.log('valores',myArray);
 console.log('Opcion2')
 var ids = traverse(jsonFile);
 console.log('ids', ids);
-
+console.log('Opcion3')
+/*function levelOrder(root) {
+    if (!root) return []
+    let result = []      
+    let queue = [root]     
+    while (queue.length != 0) {
+        let subarr = []    
+        const n = queue.length
+        for (let i = 0; i < n; i++) {
+            let node = queue.pop()
+            subarr.push(node.val)
+            if (node.left) queue.unshift(node.left)
+            if (node.right) queue.unshift(node.right)
+        }
+        result.push(subarr)
+    }
+    return result
+}*/
+var tree = levelOrder(arbol)
+console.log(tree)
   </script> 
 </body>
 </html>
