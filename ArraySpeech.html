@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h2>Conversor</h2>
+  <script type="text/javascript">
+  var xml1 = '(El valor de X (es igual a (8 divido 3)))'
+  var xml2 = 'solve( (x elevado a la 2) mas (coseno (x mas 5) igual a pi)'
+  var myArray = []
+
+  console.log(xml)
+function reemplazar(XML){
+  XML = XML.replaceAll("(", "( ")
+  XML = XML.replaceAll(")", " )")
+  return XML
+}
+var xml = reemplazar(xml2);
+
+myArray = xml.split(" ");
+
+function pista(element){
+    if(element == "("){
+        console.log("Tono expresion")
+    }
+    else if(element == ")"){
+        console.log("Tono expresion")
+    }
+    else if(element == "divido"){
+        console.log("Tono denominador")
+    }
+    else if(element == "seno" || element == "coseno" || element == "tangente"){
+        console.log("Tono tono geometrico")
+    }
+    else if(element == "raiz" || element == "elevado"){
+        console.log("Tono tono potencia")
+    }
+}
+console.log(myArray)
+for (let i = 0; i < myArray.length; i++) {
+    pista(myArray[i]);
+    console.log(myArray[i])
+}
+
+  </script> 
+</body>
+</html>
